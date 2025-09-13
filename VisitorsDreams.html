@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitorsdreams Visa Experts</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    header h2 {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00c6ff;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: fade 12s infinite;
+    }
+
+    .hero .slide:nth-child(1) {
+      background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw5MTI2NzZ8MHwxfHNlYXJjaHwxfHx0cmF2ZWwlMjBza2llcyUyMHN1bm5ldHxlbnwwfHx8fDE2OTQ4NzU1MjQ&ixlib=rb-4.0.3&q=80&w=1920");
+      animation-delay: 0s;
+    }
+    .hero .slide:nth-child(2) {
+      background-image: url("https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw5MTI2NzZ8MHwxfHNlYXJjaHwzfHx0cmF2ZWwlMjBjYXN0bGUlMjBza2llc3xlbnwwfHx8fDE2OTQ4NzU1NzY&ixlib=rb-4.0.3&q=80&w=1920");
+      animation-delay: 4s;
+    }
+    .hero .slide:nth-child(3) {
+      background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw5MTI2NzZ8MHwxfHNlYXJjaHw2fHx0cmF2ZWwlMjBza2llc3xlbnwwfHx8fDE2OTQ4NzU1OTQ&ixlib=rb-4.0.3&q=80&w=1920");
+      animation-delay: 8s;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      8% { opacity: 1; }
+      33% { opacity: 1; }
+      41% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.45);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .cta-buttons a {
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 114, 255, 0.5);
+    }
+
+    .btn-secondary {
+      border: 2px solid #fff;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+      color: #0072ff;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #0072ff;
+    }
+
+    /* Services Cards */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .card i {
+      font-size: 2.5rem;
+      color: #0072ff;
+      margin-bottom: 15px;
+    }
+
+    /* Contact */
+    .contact form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact input, .contact textarea {
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .contact button {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .contact button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 114, 255, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #ddd;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #00c6ff;
+      margin: 0 10px;
+      font-size: 1.2rem;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      z-index: 1000;
+      text-decoration: none;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <h2>Visitorsdreams</h2>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">How It Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="overlay"></div>
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Your Trusted Partner for Visitor & Tourist Visas Worldwide</h1>
+      <p>Dreaming of travel? We make your visitor visa process simple, fast, and stress-free.</p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn-primary">Apply Now</a>
+        <a href="#contact" class="btn-secondary">Free Visa Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" data-aos="fade-up">
+    <h2>About Us</h2>
+    <p>At Visitorsdreams Visa Experts, we understand that every journey starts with a visa. With years of experience, we provide reliable and professional visa services for individuals and families.</p>
+    <p>✅ 100% Transparent Process <br>
+       ✅ Experienced Visa Experts <br>
+       ✅ Fast & Hassle-Free Processing <br>
+       ✅ Personalized Guidance</p>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <i class="fas fa-flag-uk"></i>
+        <h3>United Kingdom (UK)</h3>
+        <p>Expert guidance on financial requirements, strong documentation, and faster approvals.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-flag-usa"></i>
+        <h3>United States (USA)</h3>
+        <p>B1/B2 visitor visa support with interview preparation.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-flag"></i>
+        <h3>Ireland</h3>
+        <p>Assistance with tourist and short-term visit visas.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-plane-departure"></i>
+        <h3>Australia</h3>
+        <p>Smooth visitor visa process for tourism, family visits, and short trips.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-map"></i>
+        <h3>New Zealand</h3>
+        <p>Hassle-free visitor visa support with financial documentation advice.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-passport"></i>
+        <h3>Europe (Schengen)</h3>
+        <p>Travel across 27 European countries with a single Schengen visa.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-flag-canada"></i>
+        <h3>Canada</h3>
+        <p>Expert guidance for visitor visas, sponsorships, and family visits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" data-aos="fade-up">
+    <h2>How It Works</h2>
+    <p>Step 1: Free Consultation – Share your travel plans<br>
+       Step 2: Document Assistance – We guide you with financials & paperwork<br>
+       Step 3: Application Filing – Hassle-free submission & tracking<br>
+       Step 4: Get Your Visa – Stress-free approval support</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact" data-aos="fade-up">
+    <h2>Contact Us</h2>
+    <p><i class="fas fa-phone"></i> 91332 92291 | <i class="fas fa-envelope"></i> Visitorsdream12@gmail.com</p>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Follow Us:</p>
+    <a href="https://www.instagram.com/visaexpert.visitorsdreams?igsh=MXJnamFmbWRrNW1vYg==" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@visaexpert.visitorsdreams?si=TYQJalt8jXai7hvI" target="_blank"><i class="fab fa-youtube"></i></a>
+    <p>&copy; 2025 Visitorsdreams Visa Experts. All Rights Reserved.</p>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919133292291" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>
